@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BTNotes - Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="app">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">BTNotes</a>
+            <div class="ms-auto d-flex align-items-center gap-3">
+                <span class="text-secondary small">Logged in</span>
+                <button class="btn btn-outline-danger btn-sm" id="logoutBtn">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container py-4">
+        <div class="row g-4">
+            <div class="col-lg-8">
+                <div class="card shadow-sm border-0 mb-4">
+                    <div class="card-body">
+                        <h5 class="fw-bold mb-1">Add Task or Note</h5>
+                        <p class="text-secondary">Create todos, plan notes, or password-protected notes.</p>
+                        <form id="taskForm" class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Title</label>
+                                <input class="form-control" type="text" id="taskTitle" placeholder="Task or note title" required>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">Type</label>
+                                <select class="form-select" id="taskType">
+                                    <option value="Todo">Todo</option>
+                                    <option value="Plan Note">Plan Note</option>
+                                    <option value="Password Note">Password Note</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">Priority</label>
+                                <select class="form-select" id="taskPriority">
+                                    <option value="1">1 - Low</option>
+                                    <option value="2">2</option>
+                                    <option value="3" selected>3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5 - High</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Due Date</label>
+                                <input class="form-control" type="date" id="taskDueDate">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Short Description</label>
+                                <input class="form-control" type="text" id="taskDescription" placeholder="Add quick details">
+                            </div>
+                            <div class="col-md-6 d-none" id="passwordField">
+                                <label class="form-label">Note Password</label>
+                                <input class="form-control" type="password" id="taskPassword" placeholder="Required for password notes">
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-primary" type="submit">Add Item</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="card shadow-sm border-0 mb-4">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="fw-bold mb-0">Task Cards</h5>
+                            <span class="text-secondary small">Toggle status or delete items</span>
+                        </div>
+                        <div id="taskCards" class="row g-3"></div>
+                    </div>
+                </div>
+
+                <div class="card shadow-sm border-0">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="fw-bold mb-0">Task List</h5>
+                            <span class="text-secondary small">DataTables enabled</span>
+                        </div>
+                        <div class="table-responsive">
+                            <table id="tasksTable" class="table table-striped align-middle">
+                                <thead>
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Type</th>
+                                        <th>Priority</th>
+                                        <th>Status</th>
+                                        <th>Due Date</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="card shadow-sm border-0 mb-4">
+                    <div class="card-body">
+                        <h5 class="fw-bold mb-3">Progress Overview</h5>
+                        <canvas id="progressChart" height="180"></canvas>
+                        <div class="mt-3 text-secondary small">Updated automatically as tasks change.</div>
+                    </div>
+                </div>
+
+                <div class="card shadow-sm border-0 mb-4">
+                    <div class="card-body">
+                        <h5 class="fw-bold mb-3">Team Projects</h5>
+                        <div class="table-responsive">
+                            <table id="projectsTable" class="table table-sm align-middle">
+                                <thead>
+                                    <tr>
+                                        <th>Project</th>
+                                        <th>Lead</th>
+                                        <th>Status</th>
+                                        <th>Progress</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card shadow-sm border-0">
+                    <div class="card-body">
+                        <h5 class="fw-bold mb-3">Team Collaboration</h5>
+                        <ul class="list-group list-group-flush" id="teamList"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="scripts.js"></script>
+</body>
+</html>

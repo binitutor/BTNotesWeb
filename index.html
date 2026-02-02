@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BTNotes - Home</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="landing">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">BTNotes</a>
+            <div class="ms-auto d-flex gap-2">
+                <a class="btn btn-outline-primary" href="login.html">Login</a>
+                <a class="btn btn-primary" href="signup.html">Sign Up</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-section">
+        <div class="container">
+            <div class="row align-items-center gy-4">
+                <div class="col-lg-6">
+                    <p class="text-uppercase text-secondary small mb-2">Plan • Notes • Projects</p>
+                    <h1 class="display-5 fw-bold">Organize work, notes, and team projects in one place.</h1>
+                    <p class="lead text-secondary">BTNotes keeps your personal tasks, plan notes, and password-protected notes safe while tracking team collaboration with live progress insights.</p>
+                    <div class="d-flex flex-wrap gap-2">
+                        <a class="btn btn-primary btn-lg" href="signup.html">Get Started</a>
+                        <a class="btn btn-outline-primary btn-lg" href="login.html">I already have an account</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card shadow-sm border-0">
+                        <div class="card-body">
+                            <h5 class="fw-bold">Today’s Focus</h5>
+                            <div class="task-card mt-3">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="mb-1">Finalize sprint checklist</h6>
+                                        <small class="text-secondary">Team Project • Due Today</small>
+                                    </div>
+                                    <span class="priority-label priority-2">Priority 2</span>
+                                </div>
+                            </div>
+                            <div class="task-card">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="mb-1">Write launch plan notes</h6>
+                                        <small class="text-secondary">Plan Note • Due Tomorrow</small>
+                                    </div>
+                                    <span class="priority-label priority-3">Priority 3</span>
+                                </div>
+                            </div>
+                            <div class="task-card">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="mb-1">Store credentials securely</h6>
+                                        <small class="text-secondary">Password Note • Protected</small>
+                                    </div>
+                                    <span class="priority-label priority-5">Priority 5</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="container py-5">
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="feature-card h-100">
+                    <h5 class="fw-bold">Authentication & Security</h5>
+                    <p class="text-secondary">Dedicated login and signup views with protected routes. Tokens are stored securely (demo uses memory/session only).</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card h-100">
+                    <h5 class="fw-bold">Task Management</h5>
+                    <p class="text-secondary">Create tasks, plan notes, and password-protected notes with priority labels and status toggles.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card h-100">
+                    <h5 class="fw-bold">Team Projects</h5>
+                    <p class="text-secondary">Track collaboration with progress charts and DataTables powered project lists.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-4 bg-white border-top">
+        <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
+            <span class="text-secondary">© 2026 BTNotes. All rights reserved.</span>
+            <div class="d-flex gap-3">
+                <a class="text-secondary" href="login.html">Login</a>
+                <a class="text-secondary" href="signup.html">Signup</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="scripts.js"></script>
+</body>
+</html>
